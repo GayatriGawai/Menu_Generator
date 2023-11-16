@@ -10,6 +10,14 @@ fetch('dataFile.json')
         // Initialized the menu bar and sidebar
         createMenuBar(jsonData);
         createSidebar(jsonData[Object.keys(jsonData)[0]], 2);
+
+        displayContent(jsonData[Object.keys(jsonData)[0]], 1);
+        displayContent(
+            jsonData[Object.keys(jsonData)[0]][
+                Object.keys(jsonData[Object.keys(jsonData)[0]])[0]
+            ],
+            2
+        );
     });
 
 // Function to create the Navigation bar
