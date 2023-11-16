@@ -30,7 +30,7 @@ function createMenuBar(data, depth = 1) {
 // Function to create the sidebar
 function createSidebar(data, depth = 2) {
     const sidebar = document.getElementById('sidebar');
-    sidebar.innerHTML = '';
+    sidebar.innerHTML = ''; //To reset the sidebar so it will print the next depth2 of selected item
 
     for (const key in data) {
         const sidebarItem = document.createElement('div');
@@ -51,3 +51,17 @@ function displayContent(content, depth) {
 
 createMenuBar(jsonData);
 //createSidebar(jsonData);
+// jQuery script for handling active class on click
+$(document).ready(function () {
+    // Add click event for sidebar items
+    $('#sidebar .nav-link').on('click', function () {
+        $('#sidebar .nav-link').removeClass('active'); // Remove active class from all items
+        $(this).addClass('active'); // Add active class to the clicked item
+    });
+
+    // Add click event for navbar items
+    $('#menu-bar .nav-link').on('click', function () {
+        $('#menu-bar .nav-link').removeClass('active'); // Remove active class from all items
+        $(this).addClass('active'); // Add active class to the clicked item
+    });
+});
