@@ -50,18 +50,3 @@ function displayContent(content, depth) {
 }
 
 createMenuBar(jsonData);
-//createSidebar(jsonData);
-// jQuery script for handling active class on click
-$(document).ready(function () {
-    // Add click event for sidebar items
-    $('#sidebar .nav-link').on('click', function () {
-        $('#sidebar .nav-link').removeClass('active'); // Remove active class from all items
-        $(this).addClass('active'); // Add active class to the clicked item
-    });
-
-    // Add click event for navbar items
-    $('#menu-bar .nav-link').on('click', function () {
-        $('#menu-bar .nav-link').removeClass('active'); // Remove active class from all items
-        $(this).addClass('active'); // Add active class to the clicked item
-    });
-});
