@@ -10,12 +10,16 @@
         />
         <script src="menu.js"></script>
         <style>
+            .container {
+                display: flex;
+            }
             /* Styles for the sidebar */
             #sidebar {
                 height: 100%;
-                background-color: #f8f9fa; /* Adjust the background color as needed */
+                /* background-color: #f8f9fa;  */
                 padding: 20px;
-                width: 25%;
+                width: 100%;
+                border: 1px solid #ccc;
             }
 
             /* Added style for the navbar */
@@ -45,6 +49,8 @@
             #menu-bar .nav-link.active {
                 background-color: #007bff; /* Change the background color for active items */
                 color: #fff; /* Change the text color for active items */
+                box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+                border: 2px solid #5ea4f0;
             }
         </style>
     </head>
