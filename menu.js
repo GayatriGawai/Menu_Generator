@@ -20,9 +20,18 @@ function createMenuBar(data, depth = 1) {
         menuItem.textContent = key;
         menuItem.classList.add('nav-link', `depth-${depth}`);
         menuItem.addEventListener('click', () => {
-            createSidebar(data[key], 2); //To print the selected items
+            // Removed the 'active' class from all menu items
+            document.querySelectorAll('.menu-item').forEach((item) => {
+                item.classList.remove('active');
+            });
+
+            // Adding the 'active' class to the selected menu item
+            menuItem.classList.add('active');
+
+            createSidebar(data[key], 2);
             displayContent(data[key], depth);
         });
+        menuItem.classList.add('menu-item'); // Adding this line to mark it as a menu item
         menuBar.appendChild(menuItem);
     }
 }
@@ -30,15 +39,24 @@ function createMenuBar(data, depth = 1) {
 // Function to create the sidebar
 function createSidebar(data, depth = 2) {
     const sidebar = document.getElementById('sidebar');
-    sidebar.innerHTML = ''; //To reset the sidebar so it will print the next depth2 of selected item
+    sidebar.innerHTML = '';
 
     for (const key in data) {
         const sidebarItem = document.createElement('div');
         sidebarItem.textContent = key;
         sidebarItem.classList.add('nav-link', `depth-${depth}`);
-        sidebarItem.addEventListener('click', () =>
-            displayContent(data[key], depth)
-        );
+        sidebarItem.addEventListener('click', () => {
+            // Removed the 'active' class from all sidebar items
+            document.querySelectorAll('.sidebar-item').forEach((item) => {
+                item.classList.remove('active');
+            });
+
+            // Adding the 'active' class to the selected sidebar item
+            sidebarItem.classList.add('active');
+
+            displayContent(data[key], depth);
+        });
+        sidebarItem.classList.add('sidebar-item'); // Add this line to mark it as a sidebar item
         sidebar.appendChild(sidebarItem);
     }
 }
