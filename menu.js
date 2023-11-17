@@ -6,10 +6,10 @@ fetch('dataFile.json')
     })
     .then((data) => {
         jsonData = data;
-
         // Initialized the menu bar and sidebar
         createMenuBar(jsonData);
         createSidebar(jsonData[Object.keys(jsonData)[0]], 2);
+        // Check if textarea is empty and display default content
         displayContent(jsonData[Object.keys(jsonData)[0]], 1);
         displayContent(
             jsonData[Object.keys(jsonData)[0]][
@@ -69,16 +69,18 @@ function createSidebar(data, depth = 2) {
 }
 
 // Function to display content in the textarea
-
 function displayContent(content, depth) {
     const textarea = document.getElementById('json-textarea');
     const isMenuActive = document.querySelector('.menu-item.active');
     const isSidebarActive = document.querySelector('.sidebar-item.active');
 
-    if (isMenuActive && isSidebarActive) {
+    if (!isMenuActive && !isSidebarActive) {
+        textarea.value = JSON.stringify(content, null, 2);
+    } else if (isMenuActive && isSidebarActive) {
         textarea.value = JSON.stringify(content, null, 2);
     } else {
-        textarea.value = ''; //It will make textArea blank if only one is selected
+        textarea.value = ''; // It will make textArea blank if only one is selected
     }
 }
+
 createMenuBar(jsonData);
